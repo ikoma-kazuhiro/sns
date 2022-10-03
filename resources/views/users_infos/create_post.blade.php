@@ -9,7 +9,7 @@
     </head>
     <body>
         <h1>Blog Name</h1>
-        <form action="/sns_users" method="POST">
+        <form action="/users_infos" method="POST">
             @csrf
             <div class="title">
                 <h2>Title</h2>
