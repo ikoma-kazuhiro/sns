@@ -6,6 +6,7 @@ use App\Sns_user;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Post;
+use App\Sns_users_info;
 
 class Sns_userController extends Controller
 {
@@ -48,6 +49,11 @@ class Sns_userController extends Controller
         $post->fill($input_post)->save();
     
         return redirect('/sns_users/' . $post->id);
+    }
+    
+    public function edit_user_info(Sns_users_info $sns_users_info)
+    {
+        return view('/sns_users/edit_user_info')->with(['sns_users_info' => $sns_users_info]);
     }
     
     
