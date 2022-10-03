@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSnsUsersInfoTable extends Migration
+class CreateSnsUsersInfosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSnsUsersInfoTable extends Migration
      */
     public function up()
     {
-        Schema::create('sns_users_info', function (Blueprint $table) {
+        Schema::create('sns_users_infos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('racket');
             $table->string('shoes');
@@ -29,6 +29,6 @@ class CreateSnsUsersInfoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sns_users_info');
+        Schema::dropIfExists('sns_users_infos');
     }
 }
