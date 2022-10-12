@@ -9,7 +9,7 @@
     </head>
     <body>
         <h1>Blog Name</h1>
-        <form action="/users_infos" method="POST">
+        <form action="/users_infos/create_post" method="POST">
             @csrf
             <div class="title">
                 <h2>Title</h2>

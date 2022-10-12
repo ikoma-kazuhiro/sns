@@ -19,6 +19,8 @@
             <p class='body'>{{ $post->body }}</p>
         </div>
     
+    [<a href="/comments/{{ $post->id }}">コメント</a>]<br>
+    
     [<a href="/users_infos/{{ $post->id }}/edit_post">編集</a>]<br>
     
     [<a href='/users_infos/show_posts_list'>back</a>]

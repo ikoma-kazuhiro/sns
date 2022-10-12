@@ -17,8 +17,11 @@
         <p><a href='/users_infos/show_posts_list'>投稿一覧</a></p>
         <h2>お仲間探し</h2>
         <h2>アカウント</h2>
-        <p><a href='/users_infos/edit_users_info'>アカウント編集</a></p>
-        
+        @if(empty($users_info))
+            <p><a href='/users_infos/create_users_info'>アカウント作成</a></p>
+        @else
+            <p><a href='/users_infos/edit_users_info/{{ $users_info->id }}'>アカウント編集</a></p>
+        @endif
     </body>
     
 </html>
