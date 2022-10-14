@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSnsUsersInfoIdToSnsUsersTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddSnsUsersInfoIdToSnsUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('sns_users', function (Blueprint $table) {
-            $table->integer('sns_users_info_id')->unsigned();
+        Schema::create('comments', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->integer('post_id');
+            $table->string('name');
+            $table->string('comment');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AddSnsUsersInfoIdToSnsUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('sns_users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('comments');
     }
 }

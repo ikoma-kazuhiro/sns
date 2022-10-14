@@ -13,19 +13,24 @@
 
 
 Route::group(['middleware' => ['auth']], function(){
-Route::get('/sns_users/edit_user_info', 'Sns_userController@edit_user_info');
-Route::get('/sns_users/show_posts_list', 'Sns_userController@show_posts_list');
-Route::get('/sns_users/{post}/edit_post', 'Sns_userController@edit_post');
-Route::get('/sns_users/{post}', 'Sns_userController@show_detail_post');
-Route::put('/sns_post/{post}', 'Sns_userController@update')->name('post_update');
-Route::get('/sns_users/create_post', 'Sns_userController@create_post');
+Route::get('/users_infos/create_post', 'UserController@create_post');
+Route::get('/users_infos/create_users_info', 'UserController@create_users_info');
+Route::get('/users_infos/edit_users_info/{users_info}', 'UserController@edit_users_info');
+Route::put('/users_infos/edit_users_info/{users_info}', 'UserController@update_users_info');
+Route::get('/users_infos/show_posts_list', 'UserController@show_posts_list');
+Route::get('/users_infos/show_detail_post', 'UserController@show_detail_post');
+Route::get('/users_infos/{post}/edit_post', 'UserController@edit_post');
+Route::get('/users_infos/{post}', 'UserController@show_detail_post');
+Route::put('/users_infos/{post}', 'UserController@update_post')->name('post_update');
 
+Route::post('/users_infos/create_users_info', 'UserController@store_users_info');
+Route::post('/users_infos/create_post', 'UserController@store_post');
 
+Route::get('/comments/{post}', 'CommentController@show_comments');
+Route::post('/comments/{post}', 'CommentController@store');
 
-Route::get('/', 'Sns_userController@index');
-Route::get('/sns_users', 'Sns_userController@index');
-Route::post('/sns_users', 'Sns_userController@store');
-Route::get('/sns_users/show_detail_post', 'Sns_userController@show_detail_post');
+Route::get('/', 'UserController@index');
+Route::get('/users_infos', 'UserController@index');
 });
 Auth::routes();
 
