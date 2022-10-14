@@ -21,7 +21,7 @@ Route::get('/users_infos/show_posts_list', 'UserController@show_posts_list');
 Route::get('/users_infos/show_detail_post', 'UserController@show_detail_post');
 Route::get('/users_infos/{post}/edit_post', 'UserController@edit_post');
 Route::get('/users_infos/{post}', 'UserController@show_detail_post');
-Route::put('/users_infos/{post}', 'UserController@update_post');
+Route::put('/users_infos/{post}', 'UserController@update_post')->name('post_update');
 
 Route::post('/users_infos/create_users_info', 'UserController@store_users_info');
 Route::post('/users_infos/create_post', 'UserController@store_post');
