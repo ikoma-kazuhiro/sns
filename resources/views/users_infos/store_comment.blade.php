@@ -19,6 +19,9 @@
         </div>
         
         {{--ここより下にはpostのidにリレーションされているコメントを表示したい--}}
+        @if(empty($post->comments))
+            まだコメントはありません
+        @else
         <div class='comments'>
             @foreach ($post->comments as $comment)
                 <div class='post'>
@@ -26,6 +29,7 @@
                 </div>
             @endforeach
         </div>
+        @endif
         
         
         {{--ここより下には、postのidとリレーションしてコメントを登録できるようにしたい--}}

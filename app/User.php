@@ -39,11 +39,12 @@ class User extends Authenticatable
     
     public function users_info()   
         {
-            return $this->hasOne('App\Users_info');  
+            return $this->hasOne('App\Users_info', 'user_id');  
         }
         
     public function posts()   
         {
-            return $this->hasMany('App\Post');  
+            return $this->hasMany('App\Post', 'user_id');  
         }
+        
 }
