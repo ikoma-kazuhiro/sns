@@ -30,15 +30,15 @@
         
         {{--ここより下には、postのidとリレーションしてコメントを登録できるようにしたい--}}
         <div class="content">
-            <form action="/comments/{{ $post->id }}" method="POST">
+            <form action="/comments/store" method="POST">
                 @csrf
-                @method('PUT')
                 <div class='content__comment'>
                     <h2>コメント</h2>
                     <input type='text' name='comment[comment]' value="{{ $post->comment }}">
                 </div>
-                {{--<input type="hidden" name="comment[name]" value="{{ $post->users_infos->nickname }}">--}}
+                <input type="hidden" name="comment[name]" value="{{ $post->user->users_info->nickname }}">
                 <input type="hidden" name="comment[post_id]" value="{{ $post->id }}">
+                <input type="hidden" name="comment[comment_user_id]" value="{{ $post->user_id }}">
                 <input type="submit" value="保存">
             </form>
         </div>

@@ -14,10 +14,10 @@ class CommentController extends Controller
         return view('users_infos/store_comment')->with(['post' => $post->first()]);
     }
     
-    public function store(Comment $comment, CommentRequest $request)
+    public function store(Comment $comment, Request $request)
     {
         $input = $request['comment'];
-        $post->fill($input)->save();
-        return redirect('/users_infos/' . $post->id);
+        $comment->fill($input)->save();
+        return redirect('/comments/' . $post->id);
     }
 }

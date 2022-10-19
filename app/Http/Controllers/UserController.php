@@ -25,16 +25,16 @@ class UserController extends Controller
     }
     
     public function create_post()
-        {
-            return view('users_infos/create_post');
-        }
+    {
+        return view('users_infos/create_post');
+    }
         
     public function store_post(Post $post, PostRequest $request)
-        {
-            $input = $request['post'];
-            $post->fill($input)->save();
-            return redirect()->action('UserController@index');
-        }
+    {
+        $input = $request['post'];
+        $post->fill($input)->save();
+        return redirect()->action('UserController@index');
+    }
         
     public function show_posts_list(Post $post)
     {
@@ -94,5 +94,11 @@ class UserController extends Controller
     public function show_detail_user_info(Users_info $users_info)
     {
         return view('users_infos/show_detail_user_info')->with(['users_info' => $users_info]);
+    }
+    
+    public function delete(Post $post)
+    {
+        $post->delete();
+        return redirect('/');
     }
 }
