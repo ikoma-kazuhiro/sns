@@ -25,7 +25,8 @@
         <div class='comments'>
             @foreach ($post->comments as $comment)
                 <div class='post'>
-                    <p class='comment'>{{ $comment->comment }}</p>
+                    <h3>{{$comment->commentUser->usersInfo->nickname}}</h3>
+                    <p class='comment'>{!! nl2br(e($comment->comment)) !!}</p>
                 </div>
             @endforeach
         </div>
@@ -38,11 +39,10 @@
                 @csrf
                 <div class='content__comment'>
                     <h2>コメント</h2>
-                    <input type='text' name='comment[comment]' value="{{ $post->comment }}">
+                    <textarea name='comment[comment]'></textarea>
                 </div>
-                <input type="hidden" name="comment[name]" value="{{ $post->user->users_info->nickname }}">
                 <input type="hidden" name="comment[post_id]" value="{{ $post->id }}">
-                <input type="hidden" name="comment[comment_user_id]" value="{{ $post->user_id }}">
+                <input type="hidden" name="comment[comment_user_id]" value="{{ Auth::id() }}">
                 <input type="submit" value="保存">
             </form>
         </div>

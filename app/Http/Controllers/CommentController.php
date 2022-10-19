@@ -18,6 +18,6 @@ class CommentController extends Controller
     {
         $input = $request['comment'];
         $comment->fill($input)->save();
-        return redirect('/comments/' . $post->id);
+        return redirect('/comments/' . $comment->post_id);
     }
 }

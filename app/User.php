@@ -37,7 +37,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
-    public function users_info()   
+    public function usersInfo()   
         {
             return $this->hasOne('App\Users_info', 'user_id');  
         }
@@ -46,5 +46,9 @@ class User extends Authenticatable
         {
             return $this->hasMany('App\Post', 'user_id');  
         }
-        
+    
+    public function comments()   
+        {
+            return $this->hasMany('App\Comment', 'user_id');  
+        }
 }

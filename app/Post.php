@@ -14,16 +14,11 @@ class Post extends Model
     
     public function user()
         {
-            return $this->belongsTo('App\User', 'id');
+            return $this->belongsTo('App\User', 'user_id', 'id');
         }
         
-    public function comments_post_id()
+    public function comments()
         {
-            return $this->hasMany('App\Comment', 'post_id');
-        }
-    
-    public function comments_comment_user_id()
-        {
-            return $this->hasMany('App\Comment', 'comment_user_id');
+            return $this->hasMany('App\Comment', 'post_id')->with('commentUser');
         }
 }
