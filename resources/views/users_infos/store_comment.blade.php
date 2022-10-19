@@ -19,26 +19,30 @@
         </div>
         
         {{--ここより下にはpostのidにリレーションされているコメントを表示したい--}}
+        @if(empty($post->comments))
+            まだコメントはありません
+        @else
         <div class='comments'>
             @foreach ($post->comments as $comment)
                 <div class='post'>
-                    <p class='comment'>{{ $comment->comment }}</p>
+                    <h3>{{$comment->commentUser->usersInfo->nickname}}</h3>
+                    <p class='comment'>{!! nl2br(e($comment->comment)) !!}</p>
                 </div>
             @endforeach
         </div>
+        @endif
         
         
         {{--ここより下には、postのidとリレーションしてコメントを登録できるようにしたい--}}
         <div class="content">
-            <form action="/comments/{{ $post->id }}" method="POST">
+            <form action="/comments/store" method="POST">
                 @csrf
-                @method('PUT')
                 <div class='content__comment'>
                     <h2>コメント</h2>
-                    <input type='text' name='comment[comment]' value="{{ $post->comment }}">
+                    <textarea name='comment[comment]'></textarea>
                 </div>
-                {{--<input type="hidden" name="comment[name]" value="{{ $post->users_infos->nickname }}">--}}
                 <input type="hidden" name="comment[post_id]" value="{{ $post->id }}">
+                <input type="hidden" name="comment[comment_user_id]" value="{{ Auth::id() }}">
                 <input type="submit" value="保存">
             </form>
         </div>

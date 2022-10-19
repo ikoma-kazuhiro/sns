@@ -12,14 +12,14 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
-        <div class='posts'>
-            @foreach ($posts as $post)
+        <h1>ユーザ一覧</h1>
+        <div class='users_info'>
+            @foreach ($users_infos as $users_info)
             {{--$posts as $key => $post --}}
-                <div class='post'>
-                    <h2 class='title'>
-                        <a href="{{route('show_detail_post', ['post'=>$post->id])}}">{{ $post->title }}</a>
-                    </h2>
-                    <p class='body'>{{ $post->body }}</p>
+                <div class=''>
+                    <a href="/users_infos/show_detail_user/{{ $users_info->id }}">
+                        {{ $users_info->nickname }}
+                    </a>
                 </div>
             @endforeach
         </div>

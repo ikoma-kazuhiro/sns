@@ -11,11 +11,12 @@
     </head>
     
     <body>
-        <h1>Blog Name</h1>
+        <h1>バド探し</h1>
         <h2>ホーム</h2>
         <p><a href='/users_infos/create_post'>投稿作成</a></p>
         <p><a href='/users_infos/show_posts_list'>投稿一覧</a></p>
         <h2>お仲間探し</h2>
+        <p><a href='/users_infos/show_users_list'>アカウント一覧</a></p>
         <h2>アカウント</h2>
         @if(empty($users_info))
             <p><a href='/users_infos/create_users_info'>アカウント作成</a></p>
