@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
     <div id="app">
@@ -71,10 +74,33 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="row">
+            <div class="col-3 bg-info text-dark">
+                <div class="sidebar_content">
+                    <h2>ホーム</h2>
+                    <p><a href='/users_infos/create_post'>投稿作成</a></p>
+                    <p><a href='/users_infos/show_posts_list'>投稿一覧</a></p>
+                    <h2>お仲間探し</h2>
+                    <p><a href='/users_infos/show_users_list'>アカウント一覧</a></p>
+                    <h2>プレイヤー募集</h2>
+                    <p><a href=''>募集掲示板</a></p>
+                    <h2>グッズレビュー</h2>
+                    <p><a href=''>口コミ一覧</a></p>
+                    <p><a href=''>口コミ登録</a></p>
+                    <h2>アカウント</h2>
+                    @if(empty($users_info))
+                        <p><a href='/users_infos/create_users_info'>アカウント作成</a></p>
+                    @else
+                        <p><a href='/users_infos/edit_users_info/{{ $users_info->id }}'>アカウント編集</a></p>
+                    @endif
+                </div>
+            </div>
+            <div class="col">
+                <main class="py-4">
+                    @yield('content')
+                </main>
+            </div>
+        </div>
     </div>
 </body>
 </html>

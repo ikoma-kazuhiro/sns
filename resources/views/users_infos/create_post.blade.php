@@ -24,6 +24,20 @@
             <input type="hidden" name="post[user_id]" value="{{ Auth::user()->id }}">
             <input type="submit" value="保存"/>
         </form>
+        
+        <form action="/image_test/store" method="post">
+            @csrf
+            <div class="title">
+                <h2>Title</h2>
+                <input type="text" name="post[title]" placeholder="タイトル"/>
+            </div>
+            <div class="body">
+                <h2>Body</h2>
+                <textarea name="post[body]" placeholder="今日も1日お疲れさまでした。"></textarea>
+            </div>
+            <input type="submit" value="保存"/>
+        </form>
+        
         <div class="back">[<a href="/">back</a>]</div>
     </body>
 </html>
