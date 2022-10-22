@@ -101,4 +101,9 @@ class UserController extends Controller
         $post->delete();
         return redirect('/');
     }
+    
+    public function slider()
+    {
+        return view('users_infos/slider');
+    }
 }

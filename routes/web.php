@@ -34,8 +34,13 @@ Route::post('/users_infos/create_post', 'UserController@store_post');
 Route::post('/comments/store', 'CommentController@store');
 Route::get('/comments/{post}', 'CommentController@show_comments');
 
+Route::resource('image_test', 'ImageTestController');
+
+Route::get('/slider', 'UserController@slider');
+
 Route::get('/', 'UserController@index');
 Route::get('/users_infos', 'UserController@index');
+
 });
 Auth::routes();
 
