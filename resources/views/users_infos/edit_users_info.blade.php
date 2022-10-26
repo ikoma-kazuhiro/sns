@@ -1,16 +1,9 @@
 <!DOCTYPE html>
 @extends('layouts.app')
 
+@section('gamen_title', 'ユーザー情報編集画面')
+
 @section('content')
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>Blog</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    </head>
-    <body>
-        <h1 class="title">ユーザー情報編集画面</h1>
         <div class="content">
             <form action="/users_infos/edit_users_info/{{ $users_info->id }}" method="POST">
                 @csrf
@@ -35,6 +28,4 @@
             </form>
         </div>
         <div class="back">[<a href="/">back</a>]</div>
-    </body>
-</html>
 @endsection

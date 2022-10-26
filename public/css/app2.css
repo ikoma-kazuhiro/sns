@@ -1,0 +1,14 @@
+.sidebar_content a {
+  color: white;
+  text-decoration:underline
+  }
+  
+.card-body-user {
+            height:200px;
+            overflow:auto;
+        }
+
+
+.font_kosugi {
+  font-family:'Kosugi Maru', sans-serif;
+}

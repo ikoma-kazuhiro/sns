@@ -34,7 +34,10 @@ Route::post('/users_infos/create_post', 'UserController@store_post');
 Route::post('/comments/store', 'CommentController@store');
 Route::get('/comments/{post}', 'CommentController@show_comments');
 
-Route::resource('image_test', 'ImageTestController');
+Route::get('/image_test', 'ImageTestController@index');
+Route::post('/image_test/store', 'ImageTestController@store');
+
+Route::get('/test', 'UserController@test_index');
 
 Route::get('/slider', 'UserController@slider');
 
