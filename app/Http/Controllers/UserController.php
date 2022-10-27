@@ -106,4 +106,8 @@ class UserController extends Controller
     {
         return view('users_infos/slider');
     }
+    
+    public function test_index(Request $req){
+        return view('users_infos/show_users_info');
+    }
 }
