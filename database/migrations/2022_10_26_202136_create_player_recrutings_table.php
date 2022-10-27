@@ -19,8 +19,8 @@ class CreatePlayerRecrutingsTable extends Migration
             $table->string('recruting_title');
             $table->integer('recruting_category');
             $table->string('venue');
-            $table->dateTime('date');
-            $table->dateTime('date');
+            $table->dateTime('from_datetime');
+            $table->dateTime('to_datetime');
             $table->integer('sex');
             $table->integer('min_age');
             $table->integer('max_age');
