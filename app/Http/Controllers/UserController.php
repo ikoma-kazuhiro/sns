@@ -9,7 +9,7 @@ use App\Http\Requests\Users_infoRequest;
 use App\Post;
 use App\User;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -63,6 +63,12 @@ class UserController extends Controller
     public function update_users_info(Request $request, Users_info $users_info)
     {
         $input_users_info = $request['users_info'];
+        if(!empty($request->file('users_info'))){
+            $file = $request->file('users_info');
+            $file_icon = $file['icon'];
+            $path = $file_icon->store('public/profile');
+            $input_users_info['icon'] = str_replace('public/', 'storage/', $path);
+        }
         $users_info->fill($input_users_info)->save();
     
         return redirect('/users_infos/edit_users_info/' . $users_info->id);
@@ -77,6 +83,12 @@ class UserController extends Controller
     public function store_users_info(Users_info $users_info, Request $request)
         {
             $input_users_info = $request['users_info'];
+            if(!empty($request->file('users_info'))){
+                $file = $request->file('users_info');
+                $file_icon = $file['icon'];
+                $path = $file_icon->store('public/profile');
+                $input_users_info['icon'] = str_replace('public/', 'storage/', $path);
+            }
             $users_info->fill($input_users_info)->save();
             return redirect()->action('UserController@index');
         }

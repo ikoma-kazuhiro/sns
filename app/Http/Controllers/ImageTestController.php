@@ -16,7 +16,9 @@ class ImageTestController extends Controller
         if(!empty($req->file('img'))){
             Log::debug('画像登録２');
             $file = $req->file('img');
+            dd($file);
             $path = $file->store('public/profile');
+            dd($path);
             Log::debug($path);
             $save_path = str_replace('public/', 'storage/', $path);
             Log::debug($save_path);
