@@ -12,6 +12,11 @@ class Users_info extends Model
         'shoes',
         'address',
         'user_id',
+        'birthday',
+        'age',
+        'game_history',
+        'introduction',
+        'icon',
     ];
     
     public function user()

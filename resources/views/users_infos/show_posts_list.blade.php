@@ -2,28 +2,28 @@
 @extends('layouts.app')
 
 @section('content')
-<html lang="{{ str_replace("_", "-", app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Posts</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="/css/app.css">
-    </head>
     <body>
         <div class='posts'>
+            <div class="row">
             @foreach ($posts as $post)
             {{--$posts as $key => $post --}}
-                <div class='post'>
-                    <h2 class='title'>
-                        <a href="{{route('show_detail_post', ['post'=>$post->id])}}">{{ $post->title }}</a>
-                    </h2>
-                    <p class='body'>{{ $post->body }}</p>
-                </div>
+                    <div class="card mb-3 ml-1 mr-1 col-8">
+                        <div class="card-header">
+                            {{ $post->user->usersInfo->nickname }}
+                        </div>
+                      <div class="card-body">
+                        <h5 class="card-title"><a href="{{route('show_detail_post', ['post'=>$post->id])}}">{{ $post->title }}</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ $post->created_at }}</h6>
+                        <p class="card-text">{{ $post->body }}</p>
+                        <a href="/comments/{{$post->id}}" class="btn btn-success">コメント</a>
+                        <a href="/users_infos/show_users_info/{{$post->user->id}}" class="btn btn-primary">ユーザーへ</a>
+                      </div>
+                    </div>
+                
             @endforeach
+            </div>
         </div>
-        [<a href="/">back</a>]
+        <button type="button" class="btn btn-primary" onclick="location.href='/' ">トップへ戻る</button>
     </body>
 </html>
 @endsection

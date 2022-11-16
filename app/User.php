@@ -51,4 +51,9 @@ class User extends Authenticatable
         {
             return $this->hasMany('App\Comment', 'user_id');  
         }
+        
+    public function playerRecrutings()   
+        {
+            return $this->hasMany('App\Player_recruting', 'user_id');  
+        }
 }

@@ -12,3 +12,13 @@
 .font_kosugi {
   font-family:'Kosugi Maru', sans-serif;
 }
+
+.background_shuttle{
+  background-image: url(../img/background_shuttle.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.file_btn{
+  cursor: pointer;
+}

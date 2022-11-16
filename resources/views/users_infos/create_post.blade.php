@@ -1,31 +1,37 @@
 <!DOCTYPE HTML>
 @extends('layouts.app')
 
+@section('gamen_title', '投稿作成')
+
 @section('content')
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>Blog</title>
-    </head>
-    <body>
-        <h1>Blog Name</h1>
         <form action="/users_infos/create_post" method="POST">
             @csrf
-            <div class="title">
-                <h2>Title</h2>
-                <input type="text" name="post[title]" placeholder="タイトル" value="{{ old('post.title') }}"/>
-                <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
-            </div>
-            <div class="body">
-                <h2>Body</h2>
-                <textarea name="post[body]" placeholder="今日も1日お疲れさまでした。">{{ old('post.body') }}</textarea>
-                <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
+            <div class="card mb-3 ml-1 mr-1 col-8">
+              <div class="card-header">
+                タイトルと投稿内容を記入してください
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="title">
+                        <p>タイトル</p>
+                        <input type="text" name="post[title]"/>
+                        <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="body">
+                        <p>投稿内容</p>
+                        <textarea name="post[body]"></textarea>
+                        <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <input type="submit" value="保存" class="btn btn-primary js_loading">
+                </li>
+              </ul>
             </div>
             <input type="hidden" name="post[user_id]" value="{{ Auth::user()->id }}">
-            <input type="submit" value="保存"/>
         </form>
         
-        <div class="back">[<a href="/">back</a>]</div>
-    </body>
-</html>
+        <button type="button" class="btn btn-primary js_loading" onclick="location.href='/' ">トップへ戻る</button>
 @endsection
