@@ -2,15 +2,6 @@
 @extends('layouts.app')
 
 @section('content')
-<html lang="{{ str_replace("_", "-", app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Posts</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="/css/app.css">
-    </head>
     <body>
         <div class='post'>
             <h2 class='title'>
@@ -19,18 +10,16 @@
             <p class='body'>{{ $post->body }}</p>
         </div>
     
-    [<a href="/comments/{{ $post->id }}">コメント</a>]<br>
-    
-    [<a href="/users_infos/{{ $post->id }}/edit_post">編集</a>]<br>
+    <p><button type="button" class="btn btn-success js_loading" onclick="location.href='/comments/{{ $post->id }}' ">コメント</button></p>
+    <p><button type="button" class="btn btn-primary js_loading" onclick="location.href='/users_infos/{{ $post->id }}/edit_post' ">編集</button></p>
     
     <form action="/users_infos/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
         @csrf
         @method('DELETE')
-        <button type="button" onclick="return deletePost('form_{{ $post->id }}');">削除</button> 
+        <p><a class="btn btn-danger text-white" onclick="return deletePost('form_{{ $post->id }}');">削除</a></p>
     </form>
-    <br>
     
-    [<a href='/users_infos/show_posts_list'>back</a>]
+    <p><button type="button" class="btn btn-primary js_loading" onclick="location.href='/users_infos/show_posts_list' ">戻る</button></p>
     
     <script>
         function deletePost(e){

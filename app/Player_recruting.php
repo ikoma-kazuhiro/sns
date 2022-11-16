@@ -11,7 +11,7 @@ class Player_recruting extends Model
         'recruting_title',
         'recruting_category',
         'venue',
-        'from_dateime',
+        'from_datetime',
         'to_datetime',
         'sex',
         'min_age',

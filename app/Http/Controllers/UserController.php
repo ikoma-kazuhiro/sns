@@ -98,9 +98,9 @@ class UserController extends Controller
         return view('users_infos/show_users_list')->with(['users_infos' => $users_info->get()]);
     }
     
-    public function show_detail_user(Users_info $users_info)
+    public function show_users_info(Users_info $users_info)
     {
-        return view('users_infos/show_detail_user')->with(['users_info' => $users_info]);
+        return view('users_infos/show_users_info')->with(['users_info' => $users_info, 'posts' => $users_info->user->posts]);
     }
     
     public function show_detail_user_info(Users_info $users_info)
